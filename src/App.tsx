@@ -236,47 +236,14 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Tab switchers */}
-            <div className="flex bg-slate-900/80 p-0.5 rounded-full border border-white/15 text-xs">
-              <button
-                onClick={() => setActiveTab('card')}
-                className={`px-3 py-1 rounded-full font-medium transition-all ${
-                  activeTab === 'card'
-                    ? 'bg-amber-400 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                Card
-              </button>
-              <button
-                onClick={() => setActiveTab('guestbook')}
-                className={`px-3 py-1 rounded-full font-medium transition-all flex items-center gap-1 ${
-                  activeTab === 'guestbook'
-                    ? 'bg-amber-400 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                <MessageSquare className="w-3 h-3" />
-                <span>Guestbook</span>
-              </button>
-            </div>
-
             <button
               onClick={handleToggleSound}
               type="button"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-amber-200 transition-all"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-amber-200 transition-all flex items-center gap-1.5 px-3 py-1.5 text-xs font-sans-clean"
               title={soundOn ? 'Mute Music' : 'Play Music'}
             >
-              {soundOn ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
-            </button>
-
-            <button
-              onClick={() => setIsCustomizerOpen(true)}
-              type="button"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-xs transition-all shadow"
-            >
-              <Edit3 className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Customize</span>
+              {soundOn ? <Volume2 className="w-4 h-4 text-amber-200" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
+              <span className="hidden sm:inline">{soundOn ? 'Sound On' : 'Muted'}</span>
             </button>
 
             <button
@@ -295,12 +262,11 @@ export default function App() {
       <main className="w-full flex-1 flex flex-col items-center justify-center p-4 sm:p-8 z-10">
         {isCardOpened && (
           <div className="w-full flex flex-col items-center justify-center max-w-2xl py-6 animate-fadeIn">
-            {activeTab === 'card' ? (
-              /* The Luxury Main Celebration Card */
-              <div
-                id="celebrationCard"
-                className="relative w-full max-w-[440px] bg-white p-8 sm:p-12 shadow-2xl transition-all duration-700 rounded-sm border border-slate-200"
-              >
+            {/* The Luxury Main Celebration Card */}
+            <div
+              id="celebrationCard"
+              className="relative w-full max-w-[440px] bg-white p-8 sm:p-12 shadow-2xl transition-all duration-700 rounded-sm border border-slate-200"
+            >
                 {/* Inner double border */}
                 <div className="absolute inset-3 border border-[#c3d4e3] pointer-events-none" />
 
@@ -368,16 +334,6 @@ export default function App() {
                   </span>
                 </div>
               </div>
-            ) : (
-              /* Guestbook Tab View */
-              <GuestbookSection
-                entries={guestbookEntries}
-                onAddEntry={handleAddGuestbookEntry}
-                onLikeEntry={handleLikeGuestbookEntry}
-                groomName={cardData.groomName}
-                brideName={cardData.brideName}
-              />
-            )}
           </div>
         )}
       </main>
