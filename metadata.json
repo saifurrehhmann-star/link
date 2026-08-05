@@ -1,0 +1,6 @@
+{
+  "name": "Wedding & Celebration Greeting Card",
+  "description": "Interactive digital wedding and celebration card with envelope reveal, ambient Web Audio piano music, 3D parallax tilt, customizable names and messages, and guestbook blessings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

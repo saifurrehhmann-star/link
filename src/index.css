@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-sans-clean {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+:root {
+  --navy: #14293f;
+  --navy-deep: #0b1a2b;
+  --steel: #7d97ac;
+  --steel-light: #c3d4e3;
+  --ice: #eef3f8;
+  --white: #ffffff;
+  --gold-accent: #caa24f;
+  --gold-light: #f3dfa3;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 26, 43, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(195, 212, 227, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(195, 212, 227, 0.7);
+}
+
+@keyframes floatEnvelope {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-envelope {
+  animation: floatEnvelope 3.2s ease-in-out infinite;
+}
+
+@keyframes driftParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 0.6; }
+  50% { transform: translateY(-40vh) translateX(var(--dx, 10px)); opacity: 0.35; }
+  85% { opacity: 0.5; }
+  100% { transform: translateY(-90vh) translateX(0); opacity: 0; }
+}
+
+.animate-drift {
+  animation-name: driftParticle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
