@@ -27,8 +27,8 @@ export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
     <div
       onClick={onOpen}
       id="giftOverlay"
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 p-6 cursor-pointer select-none transition-all duration-1000 ease-in-out ${
-        isOpening ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 p-6 cursor-pointer select-none transition-all duration-700 ease-in-out ${
+        isOpening ? 'opacity-0 pointer-events-none delay-1000' : 'opacity-100'
       }`}
       style={{
         background:
@@ -61,20 +61,39 @@ export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
       </div>
 
       {/* Floating 3D Gift Envelope */}
-      <div className={`relative w-[160px] h-[112px] sm:w-[180px] sm:h-[126px] ${isOpening ? '' : 'animate-float-envelope'}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#f4f8fb] to-white border border-[#c3d4e3] shadow-2xl rounded-sm" />
+      <div className={`relative w-[190px] h-[133px] sm:w-[230px] sm:h-[160px] ${isOpening ? '' : 'animate-float-envelope'}`}>
+        {/* Envelope back body */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f4f8fb] to-white border border-[#c3d4e3] shadow-2xl rounded-sm z-10" />
         
-        {/* Flap */}
+        {/* Letter Card sliding UP out of envelope during opening */}
         <div
-          className={`absolute top-0 left-0 w-0 h-0 border-l-[80px] sm:border-l-[90px] border-l-transparent border-r-[80px] sm:border-r-[90px] border-r-transparent border-t-[62px] sm:border-t-[70px] border-t-[#eef3f8] origin-top transition-transform duration-700 ease-in-out drop-shadow-md ${
-            isOpening ? 'rotate-x-180 scale-y-[-1]' : ''
+          className={`absolute inset-x-2 bottom-2 top-2 bg-gradient-to-b from-white to-slate-50 border border-[#caa24f]/70 rounded-xs shadow-2xl z-25 flex flex-col items-center justify-center p-3 text-center transition-all duration-700 ease-out ${
+            isOpening
+              ? '-translate-y-36 sm:-translate-y-48 opacity-100 scale-110 delay-300'
+              : 'translate-y-0 opacity-0 pointer-events-none'
+          }`}
+        >
+          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent via-[#caa24f] to-transparent mb-1" />
+          <span className="font-serif-display text-sm sm:text-base font-bold text-[#14293f] leading-snug">
+            {cardData.groomName} &amp; {cardData.brideName}
+          </span>
+          <span className="text-[10px] sm:text-[11px] text-[#caa24f] font-serif-display italic mt-0.5 tracking-wide">
+            {cardData.eventDate}
+          </span>
+          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent via-[#caa24f] to-transparent mt-1" />
+        </div>
+
+        {/* Envelope Flap */}
+        <div
+          className={`absolute top-0 left-0 w-0 h-0 border-l-[95px] sm:border-l-[115px] border-l-transparent border-r-[95px] sm:border-r-[115px] border-r-transparent border-t-[72px] sm:border-t-[86px] border-t-[#eef3f8] origin-top transition-transform duration-500 ease-in-out drop-shadow-md z-20 ${
+            isOpening ? '[transform:rotateX(180deg)]' : ''
           }`}
           style={{ transformOrigin: 'top center' }}
         />
 
         {/* Wax Seal */}
         <div
-          className={`absolute top-[42px] sm:top-[48px] left-1/2 -translate-x-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-radial from-[#4a6f92] to-[#0b1a2b] shadow-lg border-[1.5px] border-[#f3dfa3]/70 flex items-center justify-center z-10 transition-all duration-300 ${
+          className={`absolute top-[50px] sm:top-[60px] left-1/2 -translate-x-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-radial from-[#4a6f92] to-[#0b1a2b] shadow-xl border-[1.5px] border-[#f3dfa3]/80 flex items-center justify-center z-30 transition-all duration-300 ${
             isOpening ? 'opacity-0 scale-50' : 'opacity-100 scale-100'
           }`}
         >

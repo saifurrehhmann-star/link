@@ -132,7 +132,7 @@ export default function App() {
     setTimeout(() => {
       setIsCardOpened(true);
       setIsOpeningEnvelope(false);
-    }, 700);
+    }, 1650);
   };
 
   const handleToggleSound = (e?: React.MouseEvent) => {
