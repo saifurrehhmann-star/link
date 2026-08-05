@@ -24,7 +24,17 @@ export default function App() {
   const [cardData, setCardData] = useState<CardData>(() => {
     const saved = localStorage.getItem('celebration_card_data');
     if (saved) {
-      try { return JSON.parse(saved); } catch { return defaultCardData; }
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed.signature === 'With love, Family & Friends' || !parsed.signature) {
+          return {
+            ...parsed,
+            signature: 'With endless love, Your Best Friend',
+            message: 'To my best friend on your special milestone! May this new chapter bring you and your partner endless laughter, shared dreams, and a love that only deepens with time. Always here for you both!'
+          };
+        }
+        return parsed;
+      } catch { return defaultCardData; }
     }
     return defaultCardData;
   });
