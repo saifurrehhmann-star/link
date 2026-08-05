@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardData } from '../types';
-import { Volume2, VolumeX, Sparkles, Edit3, Share2, Heart, Download } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 interface EnvelopeOverlayProps {
   cardData: CardData;
@@ -9,7 +9,7 @@ interface EnvelopeOverlayProps {
   soundOn: boolean;
   onOpen: () => void;
   onToggleSound: (e: React.MouseEvent) => void;
-  onCustomizeClick: (e: React.MouseEvent) => void;
+  onCustomizeClick?: (e: React.MouseEvent) => void;
 }
 
 export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
@@ -19,7 +19,6 @@ export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
   soundOn,
   onOpen,
   onToggleSound,
-  onCustomizeClick,
 }) => {
   if (isOpen) return null;
 
@@ -118,19 +117,10 @@ export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
           onClick={onToggleSound}
           type="button"
           aria-label="Toggle ambient music"
-          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-3.5 py-1.5 text-white/80 hover:text-white font-sans-clean text-[10px] tracking-wider uppercase transition-all duration-200"
+          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-4 py-1.5 text-white/80 hover:text-white font-sans-clean text-[11px] tracking-wider uppercase transition-all duration-200 shadow-sm"
         >
-          {soundOn ? <Volume2 className="w-3.5 h-3.5 text-amber-200" /> : <VolumeX className="w-3.5 h-3.5 text-slate-400" />}
+          {soundOn ? <Volume2 className="w-4 h-4 text-amber-200" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
           <span>{soundOn ? 'Sound On' : 'Muted'}</span>
-        </button>
-
-        <button
-          onClick={onCustomizeClick}
-          type="button"
-          className="flex items-center gap-1.5 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-300/40 rounded-full px-3.5 py-1.5 text-amber-100 hover:text-white font-sans-clean text-[10px] tracking-wider uppercase transition-all duration-200"
-        >
-          <Edit3 className="w-3.5 h-3.5" />
-          <span>Customize Card</span>
         </button>
       </div>
     </div>

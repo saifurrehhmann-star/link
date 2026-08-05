@@ -45,6 +45,46 @@
   animation: floatEnvelope 3.2s ease-in-out infinite;
 }
 
+@keyframes cardPopupSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(48px) scale(0.8) rotateX(8deg);
+    filter: blur(4px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02) rotateX(-1deg);
+    filter: blur(0px);
+  }
+  85% {
+    transform: translateY(2px) scale(0.995) rotateX(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+.animate-card-popup {
+  animation: cardPopupSmooth 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center bottom;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
 @keyframes driftParticle {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
   15% { opacity: 0.6; }

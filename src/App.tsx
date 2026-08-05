@@ -271,11 +271,11 @@ export default function App() {
       {/* Main Container Stage */}
       <main className="w-full flex-1 flex flex-col items-center justify-center p-4 sm:p-8 z-10">
         {isCardOpened && (
-          <div className="w-full flex flex-col items-center justify-center max-w-2xl py-6 animate-fadeIn">
+          <div className="w-full flex flex-col items-center justify-center max-w-2xl py-6 [perspective:1000px]">
             {/* The Luxury Main Celebration Card */}
             <div
               id="celebrationCard"
-              className="relative w-full max-w-[440px] bg-white p-8 sm:p-12 shadow-2xl transition-all duration-700 rounded-sm border border-slate-200"
+              className="relative w-full max-w-[440px] bg-white p-8 sm:p-12 shadow-2xl rounded-sm border border-slate-200 animate-card-popup"
             >
                 {/* Inner double border */}
                 <div className="absolute inset-3 border border-[#c3d4e3] pointer-events-none" />
