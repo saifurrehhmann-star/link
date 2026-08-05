@@ -26,7 +26,7 @@ export const EnvelopeOverlay: React.FC<EnvelopeOverlayProps> = ({
     <div
       onClick={onOpen}
       id="giftOverlay"
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 p-6 cursor-pointer select-none transition-all duration-700 ease-in-out ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 sm:gap-6 p-4 sm:p-6 cursor-pointer select-none transition-all duration-700 ease-in-out ${
         isOpening ? 'opacity-0 pointer-events-none delay-1000' : 'opacity-100'
       }`}
       style={{

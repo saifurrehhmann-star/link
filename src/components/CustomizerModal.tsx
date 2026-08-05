@@ -71,10 +71,10 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-xl bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl overflow-hidden text-slate-100 my-8">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/80">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/80">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-400" />
-            <h3 className="font-serif-display text-xl font-semibold text-amber-200">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+            <h3 className="font-serif-display text-base sm:text-xl font-semibold text-amber-200">
               Personalize Wedding Card
             </h3>
           </div>
@@ -87,33 +87,33 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex border-b border-slate-800 bg-slate-900/40 px-6">
+        <div className="flex border-b border-slate-800 bg-slate-900/40 px-2 sm:px-6 overflow-x-auto">
           <button
             type="button"
             onClick={() => setActiveTab('details')}
-            className={`py-3 px-4 text-xs font-medium uppercase tracking-wider border-b-2 transition-all ${
+            className={`py-2.5 sm:py-3 px-2.5 sm:px-4 text-[10px] sm:text-xs font-medium uppercase tracking-wider border-b-2 transition-all whitespace-nowrap ${
               activeTab === 'details'
                 ? 'border-amber-400 text-amber-300'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            1. Names & Message
+            1. Names &amp; Message
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('photo')}
-            className={`py-3 px-4 text-xs font-medium uppercase tracking-wider border-b-2 transition-all ${
+            className={`py-2.5 sm:py-3 px-2.5 sm:px-4 text-[10px] sm:text-xs font-medium uppercase tracking-wider border-b-2 transition-all whitespace-nowrap ${
               activeTab === 'photo'
                 ? 'border-amber-400 text-amber-300'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            2. Photo & Image
+            2. Photo &amp; Image
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('theme')}
-            className={`py-3 px-4 text-xs font-medium uppercase tracking-wider border-b-2 transition-all ${
+            className={`py-2.5 sm:py-3 px-2.5 sm:px-4 text-[10px] sm:text-xs font-medium uppercase tracking-wider border-b-2 transition-all whitespace-nowrap ${
               activeTab === 'theme'
                 ? 'border-amber-400 text-amber-300'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -124,7 +124,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleFormSubmit} className="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
+        <form onSubmit={handleFormSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5 max-h-[70vh] overflow-y-auto">
           {activeTab === 'details' && (
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">

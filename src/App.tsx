@@ -235,56 +235,53 @@ export default function App() {
 
       {/* Top Floating Control Bar */}
       {isCardOpened && (
-        <header className="sticky top-0 z-40 w-full bg-slate-950/60 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between text-white/90">
-          <div className="flex items-center gap-2">
-            <span className="font-serif-display text-lg font-medium text-amber-200 hidden sm:inline">
-              {cardData.groomName} &amp; {cardData.brideName}
-            </span>
-            <span className="text-xs font-sans-clean text-slate-300 sm:hidden">
+        <header className="sticky top-0 z-40 w-full bg-slate-950/70 backdrop-blur-md border-b border-white/10 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between text-white/90">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-serif-display text-sm sm:text-lg font-medium text-amber-200 truncate max-w-[140px] sm:max-w-none">
               {cardData.groomName} &amp; {cardData.brideName}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={handleToggleSound}
               type="button"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-amber-200 transition-all flex items-center gap-1.5 px-3 py-1.5 text-xs font-sans-clean"
+              className="p-1.5 sm:p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-amber-200 transition-all flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-sans-clean"
               title={soundOn ? 'Mute Music' : 'Play Music'}
             >
-              {soundOn ? <Volume2 className="w-4 h-4 text-amber-200" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
-              <span className="hidden sm:inline">{soundOn ? 'Sound On' : 'Muted'}</span>
+              {soundOn ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-200" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />}
+              <span>{soundOn ? 'Sound On' : 'Muted'}</span>
             </button>
 
             <button
               onClick={handleShareCard}
               type="button"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs transition-all"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[11px] sm:text-xs transition-all"
             >
               {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
-              <span className="hidden sm:inline">{copiedLink ? 'Link Copied' : 'Share'}</span>
+              <span>{copiedLink ? 'Copied' : 'Share'}</span>
             </button>
           </div>
         </header>
       )}
 
       {/* Main Container Stage */}
-      <main className="w-full flex-1 flex flex-col items-center justify-center p-4 sm:p-8 z-10">
+      <main className="w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-8 z-10">
         {isCardOpened && (
-          <div className="w-full flex flex-col items-center justify-center max-w-2xl py-6 [perspective:1000px]">
+          <div className="w-full flex flex-col items-center justify-center max-w-2xl py-4 sm:py-6 [perspective:1000px]">
             {/* The Luxury Main Celebration Card */}
             <div
               id="celebrationCard"
-              className="relative w-full max-w-[440px] bg-white p-8 sm:p-12 shadow-2xl rounded-sm border border-slate-200 animate-card-popup"
+              className="relative w-full max-w-[420px] bg-white p-6 sm:p-12 shadow-2xl rounded-sm border border-slate-200 animate-card-popup"
             >
                 {/* Inner double border */}
-                <div className="absolute inset-3 border border-[#c3d4e3] pointer-events-none" />
+                <div className="absolute inset-2.5 sm:inset-3 border border-[#c3d4e3] pointer-events-none" />
 
                 {/* Photo frame section with 3D tilt */}
-                <div className="flex justify-center mb-6 perspective-700">
+                <div className="flex justify-center mb-5 sm:mb-6 perspective-700">
                   <div
                     ref={photoFrameRef}
-                    className="relative w-full max-w-[260px] p-2 bg-white shadow-[0_12px_28px_rgba(20,41,63,0.18),0_0_0_1px_#c3d4e3,0_0_42px_6px_rgba(240,200,105,0.22)] transition-transform duration-100 ease-out rounded-sm"
+                    className="relative w-full max-w-[210px] sm:max-w-[260px] p-2 bg-white shadow-[0_12px_28px_rgba(20,41,63,0.18),0_0_0_1px_#c3d4e3,0_0_42px_6px_rgba(240,200,105,0.22)] transition-transform duration-100 ease-out rounded-sm"
                     style={{ transformStyle: 'preserve-3d' }}
                   >
                     <div className="absolute -inset-3.5 bg-[radial-gradient(circle,rgba(240,200,105,0.28),transparent_70%)] -z-10 pointer-events-none" />
@@ -299,12 +296,12 @@ export default function App() {
                 </div>
 
                 {/* Eyebrow */}
-                <div className="text-center font-sans-clean font-normal text-[11px] tracking-[0.32em] uppercase text-[#7d97ac]">
+                <div className="text-center font-sans-clean font-normal text-[10px] sm:text-[11px] tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#7d97ac]">
                   {cardData.eyebrow}
                 </div>
 
                 {/* Heading */}
-                <h1 className="text-center font-serif-display font-medium text-2xl sm:text-3xl sm:leading-snug text-[#14293f] mt-3">
+                <h1 className="text-center font-serif-display font-medium text-xl sm:text-3xl leading-snug text-[#14293f] mt-2 sm:mt-3">
                   {cardData.heading}
                   <br />
                   <em className="font-serif-display italic font-medium text-[#0b1a2b]">
@@ -313,33 +310,33 @@ export default function App() {
                 </h1>
 
                 {/* Metallic Gold Divider */}
-                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#caa24f] via-[#f3dfa3] to-transparent my-6 mx-auto" />
+                <div className="w-14 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-[#caa24f] via-[#f3dfa3] to-transparent my-4 sm:my-6 mx-auto" />
 
                 {/* Couple Names */}
-                <div className="flex items-baseline justify-center text-center font-serif-display font-medium text-2xl sm:text-3xl tracking-wide text-[#14293f]">
+                <div className="flex items-baseline justify-center text-center font-serif-display font-medium text-xl sm:text-3xl tracking-wide text-[#14293f]">
                   <span>{cardData.groomName}</span>
-                  <span className="text-[#7d97ac] mx-2.5 text-lg italic text-[0.62em] relative -top-0.5">
+                  <span className="text-[#7d97ac] mx-2 sm:mx-2.5 text-base sm:text-lg italic text-[0.62em] relative -top-0.5">
                     {cardData.separator}
                   </span>
                   <span>{cardData.brideName}</span>
                 </div>
 
                 {/* Date */}
-                <div className="flex items-center justify-center gap-2.5 text-center font-sans-clean font-normal text-xs tracking-[0.14em] uppercase text-[#7d97ac] mt-3">
-                  <span className="w-4 h-px bg-[#c3d4e3]" />
+                <div className="flex items-center justify-center gap-2 text-center font-sans-clean font-normal text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.14em] uppercase text-[#7d97ac] mt-2.5 sm:mt-3">
+                  <span className="w-3.5 sm:w-4 h-px bg-[#c3d4e3]" />
                   <span>{cardData.eventDate}</span>
-                  <span className="w-4 h-px bg-[#c3d4e3]" />
+                  <span className="w-3.5 sm:w-4 h-px bg-[#c3d4e3]" />
                 </div>
 
                 {/* Message */}
-                <p className="text-center font-sans-clean font-light text-sm sm:text-base leading-relaxed text-[#47607a] max-w-xs mx-auto mt-6">
+                <p className="text-center font-sans-clean font-light text-xs sm:text-base leading-relaxed text-[#47607a] max-w-xs mx-auto mt-4 sm:mt-6 px-1">
                   {cardData.message}
                 </p>
 
                 {/* Signature */}
-                <div className="text-center mt-6">
+                <div className="text-center mt-5 sm:mt-6">
                   <span className="block w-6 h-px bg-gradient-to-r from-transparent via-[#caa24f] to-transparent mx-auto mb-2" />
-                  <span className="font-serif-display italic font-medium text-base text-[#7d97ac]">
+                  <span className="font-serif-display italic font-medium text-sm sm:text-base text-[#7d97ac]">
                     {cardData.signature}
                   </span>
                 </div>
